@@ -8,7 +8,8 @@ class User {
     }
 
     compare = function (y) {
-        this.age > y.age ? console.log(`${this.firstName} è piu vecchio di ${y.firstName}`) : console.log(`${y.firstName} è piu vecchio di ${this.firstName}`)          
+        const result = this.age > y.age ? `${this.firstName} è piu vecchio/a di ${y.firstName}` : `${y.firstName} è piu vecchio/a di ${this.firstName}`
+        return result          
     }
 }
 
@@ -40,10 +41,12 @@ form1.addEventListener('submit', function(e) {
     form1.reset()
 })
 
+let pResult = document.getElementById('result')
 let buttonCompare = document.getElementById('compare')
 buttonCompare.addEventListener('click', function () {
     let x
     let y
+    pResult.innerHTML = ''
     let selected1 = drop1.selectedIndex
     let valore1 = drop1.options[selected1].text
     for (let i = 0; i < users.length; i++) {
@@ -58,7 +61,8 @@ buttonCompare.addEventListener('click', function () {
             y = {...users[j]}
         }
     }
-    x.compare(y)
+    const stringresult = x.compare(y)
+    pResult.innerText = stringresult
 })
 
 
