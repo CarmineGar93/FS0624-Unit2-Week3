@@ -78,8 +78,7 @@ class Pet {
         this.breed = _breed
     }
     sameOwner = function (y) {
-        let verify = this.ownerName === y.ownerName ? true : false
-        return verify
+        return this.ownerName === y.ownerName
     }
 }
 
