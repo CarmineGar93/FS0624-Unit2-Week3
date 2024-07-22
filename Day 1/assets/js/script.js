@@ -12,18 +12,56 @@ class User {
     }
 }
 
-let u1 = new User ('Carmine', 'Gargiulo', 31, 'Italy')
-let u2 = new User ('Mario', 'Mario', 100, 'USA')
 
-console.log(u1)
-console.log(u2)
-
-u1.compare(u2);
-let o = {
-    firstName: 'A',
-    secondName: 'B',
-    thirdName : 'C',
+const createDrop = function(list) {
+    list.innerHTML = ''
+    for (let i = 0; i < users.length; i++) {
+        let option = document.createElement('option')
+        option.innerText = users[i].firstName
+        list.appendChild(option)
+    }
 }
+
+let users = []
+let form1 = document.forms[0]
+let drop1 = document.getElementById('firstCompare')
+console.log(drop1)
+let drop2 = document.getElementById('secondCompare')
+form1.addEventListener('submit', function(e) {
+    e.preventDefault()
+    const userName = document.getElementById('firstName').value
+    const userLastName = document.getElementById('lastName').value
+    const userAge = document.getElementById('age').value
+    const userLocation = document.getElementById('location').value
+    const userProfile = new User (userName, userLastName, userAge, userLocation)
+    users.push(userProfile)
+    createDrop(drop1)
+    createDrop(drop2)
+    form1.reset()
+})
+
+let buttonCompare = document.getElementById('compare')
+buttonCompare.addEventListener('click', function () {
+    let x
+    let y
+    let selected1 = drop1.selectedIndex
+    let valore1 = drop1.options[selected1].text
+    for (let i = 0; i < users.length; i++) {
+        if (valore1 === users[i].firstName) {
+            x = {...users[i]}
+        }
+    }
+    let selected2 = drop2.selectedIndex
+    let valore2 = drop2.options[selected2].text
+    for (let j = 0; j < users.length; j++) {
+        if (valore2 === users[j].firstName) {
+            y = {...users[j]}
+        }
+    }
+    x.compare(y)
+})
+
+
 
 
 
@@ -35,7 +73,6 @@ class Pet {
         this.species = _species
         this.breed = _breed
     }
-
     sameOwner = function (y) {
         let verify = this.ownerName === y.ownerName ? true : false
         return verify
@@ -53,32 +90,27 @@ const createList = function() {
             let cell = document.createElement('td')
             cells.push(cell)
         }
-
         cells[0].innerText = allPet[i].petName
         cells[1].innerText = allPet[i].ownerName
         cells[2].innerText = allPet[i].species
         cells[3].innerText = allPet[i].breed
-
         for (let j = 0; j < cells.length; j++) {
             tRow.appendChild(cells[j])
         }
-
         list.appendChild(tRow);
-
     }
 }
 
 let allPet = []
-let form = document.forms[0]
-form.addEventListener('submit', function(e) {
+let form2 = document.forms[1]
+form2.addEventListener('submit', function(e) {
     e.preventDefault()
     const petValue = document.getElementById('petName').value
     const petOwn = document.getElementById('ownerName').value
     const petSpecies = document.getElementById('species').value
     const petBreed = document.getElementById('breed').value
-
     const animal = new Pet (petValue, petOwn, petSpecies, petBreed)
     allPet.push(animal)
     createList()
-    form.reset()
+    form2.reset()
 })

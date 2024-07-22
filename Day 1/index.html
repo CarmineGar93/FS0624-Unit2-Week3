@@ -11,55 +11,106 @@
 
 <body>
     <main>
-        <h1 class="text-center">PET INFO</h1>
+        <h1 class="text-center">Users</h1>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 col-md-4">
                     <form>
                         <div class="mb-3">
-                            <label for="petName" class="form-label">Pet name</label>
-                            <input type="text" class="form-control" id="petName" aria-describedby="emailHelp"
+                            <label for="firstName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp"
                                 required />
                         </div>
                         <div class="mb-3">
-                            <label for="lastName" class="form-label">Owner Name</label>
-                            <input type="text" class="form-control" id="ownerName" aria-describedby="emailHelp"
+                            <label for="lastName" class="form-label">Surname</label>
+                            <input type="text" class="form-control" id="lastName" aria-describedby="emailHelp"
                                 required />
                         </div>
                         <div class="mb-3">
-                            <label for="species" class="form-label">Species</label>
-                            <input type="text" class="form-control" id="species" aria-describedby="emailHelp"
-                                required />
+                            <label for="age" class="form-label">Age</label>
+                            <input type="number" class="form-control" id="age" aria-describedby="emailHelp" required />
                         </div>
                         <div class="mb-3">
-                            <label for="breed" class="form-label">Breed</label>
-                            <input type="text" class="form-control" id="breed" aria-describedby="emailHelp" required />
+                            <label for="location" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="location" aria-describedby="emailHelp"
+                                required />
                         </div>
-                        <button type="submit" class="btn btn-success">
-                            SAVE PET INFORMATION
+                        <button type="submit" class="btn btn-success mb-3">
+                            SALVA CONTATTO
                         </button>
                     </form>
+                    <div class="row row-cols-3 mb-2">
+                        <div class="col">
+                            <label for="firstCompare">User1</label>
+                            <select name="firstCompare" id="firstCompare"></select>
+                        </div>
+                        <div class="col">
+                            <h5>Compare with</h5>
+                        </div>
+                        <div class="col text-end">
+                            <label for="secondCompare">User2</label>
+                            <select name="secondCompare" id="secondCompare"></select>
+                        </div>
+                        
+
+                    </div>
+                    <div class="row row-cols-1">
+                        <div class="col">
+                            <button type="button" class="btn btn-success mb-3" id="compare">COMPARE</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row justify-content-center mt-5">
-                <div class="col-12 col-md-6 col-md-4">
-                    <h2 class="text-center mb-3">PET ARCHIVE</h2>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">Pet name</th>
-                                <th scope="col">Owner Name</th>
-                                <th scope="col">Species</th>
-                                <th scope="col">Breed</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody">
-                            
-                        </tbody>
-                    </table>
+            <h1 class="text-center">PET INFO</h1>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6 col-md-4">
+                        <form>
+                            <div class="mb-3">
+                                <label for="petName" class="form-label">Pet name</label>
+                                <input type="text" class="form-control" id="petName" aria-describedby="emailHelp"
+                                    required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="lastName" class="form-label">Owner Name</label>
+                                <input type="text" class="form-control" id="ownerName" aria-describedby="emailHelp"
+                                    required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="species" class="form-label">Species</label>
+                                <input type="text" class="form-control" id="species" aria-describedby="emailHelp"
+                                    required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="breed" class="form-label">Breed</label>
+                                <input type="text" class="form-control" id="breed" aria-describedby="emailHelp"
+                                    required />
+                            </div>
+                            <button type="submit" class="btn btn-success">
+                                SAVE PET INFORMATION
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-5">
+                    <div class="col-12 col-md-6 col-md-4">
+                        <h2 class="text-center mb-3">PET ARCHIVE</h2>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Pet name</th>
+                                    <th scope="col">Owner Name</th>
+                                    <th scope="col">Species</th>
+                                    <th scope="col">Breed</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
