@@ -87,10 +87,29 @@
                                 <input type="text" class="form-control" id="breed" aria-describedby="emailHelp"
                                     required />
                             </div>
-                            <button type="submit" class="btn btn-success">
+                            <button type="submit" class="btn btn-success mb-3">
                                 SAVE PET INFORMATION
                             </button>
                         </form>
+                        <div class="row row-cols-3 mb-2">
+                            <div class="col">
+                                <label for="comp1">Pet1</label>
+                                <select name="comp1" id="comp1"></select>
+                            </div>
+                            <div class="col">
+                                <h5>Compare with</h5>
+                            </div>
+                            <div class="col text-end">
+                                <label for="comp2">Pet2</label>
+                                <select name="comp2" id="comp2"></select>
+                            </div>                                
+                        </div>
+                        <div class="row row-cols-1">
+                            <div class="col text-center">
+                                <button type="button" class="btn btn-success mb-3" id="compare2">COMPARE</button>
+                                <p id="result2"></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row justify-content-center mt-5">
