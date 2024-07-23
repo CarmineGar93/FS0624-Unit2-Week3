@@ -89,16 +89,16 @@ const createList = function() {
     for (let i = 0; i < allPet.length; i++) {
         let tRow = document.createElement ('tr')
         let cells = []
-        for (let j = 0; j < 4; j++) {
+        let arrayPet = []
+        for (let key in allPet[i]) {
+            if (typeof(allPet[i][key]) === 'string') {
+                arrayPet.push(allPet[i][key])
+            }            
+        }        
+        for (let j = 0; j < arrayPet.length; j++) {
             let cell = document.createElement('td')
-            cells.push(cell)
-        }
-        cells[0].innerText = allPet[i].petName
-        cells[1].innerText = allPet[i].ownerName
-        cells[2].innerText = allPet[i].species
-        cells[3].innerText = allPet[i].breed
-        for (let j = 0; j < cells.length; j++) {
-            tRow.appendChild(cells[j])
+            cell.innerText = arrayPet[j]
+            tRow.appendChild(cell)
         }
         list.appendChild(tRow);
     }
