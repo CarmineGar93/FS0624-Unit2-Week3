@@ -14,11 +14,11 @@ class User {
 }
 
 
-const createDrop = function(list) {
+const createDrop = function(list, array, propName) {
     list.innerHTML = ''
-    for (let i = 0; i < users.length; i++) {
+    for (let i = 0; i < array.length; i++) {
         let option = document.createElement('option')
-        option.innerText = users[i].firstName
+        option.innerText = array[i][propName]
         list.appendChild(option)
     }
 }
@@ -36,8 +36,8 @@ form1.addEventListener('submit', function(e) {
     const userLocation = document.getElementById('location').value
     const userProfile = new User (userName, userLastName, userAge, userLocation)
     users.push(userProfile)
-    createDrop(drop1)
-    createDrop(drop2)
+    createDrop(drop1, users, 'firstName')
+    createDrop(drop2, users, 'firstName')
     form1.reset()
 })
 
@@ -104,19 +104,9 @@ const createList = function() {
     }
 }
 
-const createDrop2 = function(list) {
-    list.innerHTML = ''
-    for (let i = 0; i < allPet.length; i++) {
-        let option = document.createElement('option')
-        option.innerText = allPet[i].petName
-        list.appendChild(option)
-    }
-}
-
 let allPet = []
 let form2 = document.forms[1]
 let drop3 = document.getElementById('comp1')
-
 let drop4 = document.getElementById('comp2')
 form2.addEventListener('submit', function(e) {
     e.preventDefault()
@@ -126,8 +116,8 @@ form2.addEventListener('submit', function(e) {
     const petBreed = document.getElementById('breed').value
     const animal = new Pet (petValue, petOwn, petSpecies, petBreed)
     allPet.push(animal)
-    createDrop2(drop3)
-    createDrop2(drop4)
+    createDrop(drop3, allPet, 'petName')
+    createDrop(drop4, allPet, 'petName')
     createList()
     form2.reset()
 })
