@@ -24,6 +24,7 @@ let carrello = JSON.parse(localStorage.getItem('cart'))
 
 const compileLibrary = function(array) {
     for(let i = 0; i < array.length; i++) {
+        array[i].count = 1
         let col = document.createElement('div')
         let card = document.createElement('div')        
         col.classList.add('col')
@@ -31,8 +32,7 @@ const compileLibrary = function(array) {
         let img = document.createElement('img')
         img.setAttribute('src', array[i].img)
         img.classList.add('card-img-top')
-        img.style.maxHeight = '300px'
-        img.style.minHeight = '300px'
+        img.style.height = '270px'
         let cardBody = document.createElement('div')
         cardBody.classList.add('card-body', 'd-flex', 'flex-column', 'align-items-start')
         let title = document.createElement('h6')
@@ -57,7 +57,17 @@ const compileLibrary = function(array) {
         btnBuy.setAttribute('data-bs-target', '#staticBackdrop')
         btnBuy.innerText = 'Compra'
         btnBuy.addEventListener('click', function() {
-            carrello.push(array[i])
+            let controllo = true                        
+            for (let z = 0; z < carrello.length; z++) {
+                if(array[i].title === carrello[z].title) {
+                    carrello[z].count ++
+                    controllo = false
+                }
+            }
+            if(controllo) {
+                carrello.push(array[i])
+            }
+            console.log(carrello)            
             createCart(carrello)
             localStorage.setItem('cart', JSON.stringify(carrello))
         })
@@ -86,13 +96,14 @@ const createCart = function(array) {
         const title = document.createElement('h6')
         title.innerText = array[j].title
         const price = document.createElement('p')
-        price.innerText = `${array[j].price} $`
+        price.innerText = `${array[j].price} $ x ${array[j].count}`
         const divButton = document.createElement('div')
         divButton.classList.add('col-2')
         const btnErase = document.createElement('button')
         btnErase.classList.add('btn', 'btn-danger')
         btnErase.innerText = 'X'
         btnErase.addEventListener('click', function() {
+            array[j].count = 1
             array.splice(j, 1)
             cart.innerHTML = ''
             createCart(array)
@@ -107,7 +118,7 @@ const createCart = function(array) {
         cart.appendChild(divButton)
     }    
     let total = array.reduce(function(acc, element) {
-        return acc + element.price
+        return acc + (element.price * element.count)
     }, 0)
     const totalShow = document.createElement('h5')
     totalShow.innerText = `Il totale nel carrello è: ${total.toFixed(2)} $`
