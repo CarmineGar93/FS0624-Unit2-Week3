@@ -42,7 +42,7 @@ const compileLibrary = function(array) {
         price.classList.add('card-text', 'flex-grow-1')
         price.innerText = `${array[i].price} $`
         let divBtn = document.createElement('div')
-        divBtn.classList.add('d-flex', 'justify-content-between', 'w-100')
+        divBtn.classList.add('d-flex', 'justify-content-between', 'w-100', 'flex-column', 'flex-sm-row')
         let btnDelete = document.createElement('button')
         btnDelete.classList.add('btn', 'btn-danger')
         btnDelete.innerText = 'Scarta'
