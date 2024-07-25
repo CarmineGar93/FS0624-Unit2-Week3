@@ -73,12 +73,13 @@ secondaryLoad.addEventListener('click', function () {
     mainfunction('cats')
 })
 
-const formSearch = document.getElementById('research')
-formSearch.addEventListener('submit', function(e) {
+const btnSearch = document.getElementById('btnSearch')
+btnSearch.addEventListener('click', function(e) {
     e.preventDefault
     const inputValue = document.getElementById('search').value
     mainfunction(inputValue)
-    formSearch.reset()
+    inputValue = ''
+
 })
 
 
