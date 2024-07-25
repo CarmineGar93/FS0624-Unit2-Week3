@@ -33,7 +33,7 @@ const searchImg = function () {
                     
                 </div>                
             </div>`;
-            main.style.backgroundColor = data.avg_color
+            body.style.backgroundColor = data.avg_color
         })
         .catch((err) => {
             console.log(err);
