@@ -2,7 +2,7 @@ const addressBarParameters = new URLSearchParams(window.location.search);
 const imgId = addressBarParameters.get("imgId");
 const research = addressBarParameters.get("search");
 const detailsRow = document.getElementById("detailsRow");
-const main = document.getElementsByTagName('body')[0]
+const body = document.getElementsByTagName('body')[0]
 console.log(imgId);
 console.log(research);
 const URL = "https://api.pexels.com/v1/photos/";
