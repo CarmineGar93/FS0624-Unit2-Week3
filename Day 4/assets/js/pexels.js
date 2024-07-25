@@ -13,6 +13,7 @@ const mainfunction = function(search) {
     })
     .then(response => {
         if (response) {
+            console.log(response)
             return response.json()
         } else {
             throw new Error('Errore')
@@ -42,7 +43,6 @@ const mainfunction = function(search) {
 btnHide.forEach(button => {
     button.addEventListener('click', function(e) {
         const buttonSelected = e.target
-        console.log(buttonSelected)
         const col = buttonSelected.closest('.col-md-4')
         col.classList.add('d-none')
     })
@@ -74,7 +74,8 @@ secondaryLoad.addEventListener('click', function () {
 })
 
 const formSearch = document.getElementById('research')
-formSearch.addEventListener('submit', function() {
+formSearch.addEventListener('submit', function(e) {
+    e.preventDefault
     const inputValue = document.getElementById('search').value
     mainfunction(inputValue)
     formSearch.reset()
